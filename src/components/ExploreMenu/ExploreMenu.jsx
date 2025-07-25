@@ -13,7 +13,13 @@ return (
                     {
                             menu_list.map((item)=>{
                                     return (
-                                            <div onClick={()=>setCategory(item.menu_name)} key={item.index} className="explore-menu-list-item">
+                                            <div onClick={()=>{
+                                                if(item.menu_name !== category){
+                                                    setCategory(item.menu_name)
+                                                }else if(item.menu_name === category){
+                                                    setCategory("All")
+                                                }
+                                            }} key={item.index} className="explore-menu-list-item">
                                                     <img  className={item.menu_name===category ? "active" : ""} src={item.menu_image} alt="" />
                                                     <p>{item.menu_name}</p>
                                             </div>
