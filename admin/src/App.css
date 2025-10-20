@@ -1,0 +1,24 @@
+.app {
+  width: 100%;
+}
+
+.app-content {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 0;
+}
+
+/* Responsive design */
+@media screen and (max-width: 900px) {
+  .app-content{
+    max-width: 90%;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+}
