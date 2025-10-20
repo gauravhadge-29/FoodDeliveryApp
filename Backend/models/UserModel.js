@@ -14,8 +14,8 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
     cartData :{
-        type: Array,
-        default : [],
+        type: Object,
+        default : {},
     }
 },{minimize:false}, {timestamps:true});
 

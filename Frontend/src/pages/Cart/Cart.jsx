@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
 import {useNavigate} from 'react-router-dom';
@@ -8,7 +8,8 @@ const Cart = () => {
  const {cartItems,food_list, removeFromCart,getTotalCartAmount } = useContext(StoreContext);
  const navigate = useNavigate();
 
-
+  const url  = "http://localhost:4000/images";
+  
   return (
     <div className='cart'>
       <div className="cart-items">
@@ -28,7 +29,7 @@ const Cart = () => {
             return (
               <div key={index}>
                 <div className='cart-items-title cart-items-item'>
-                <img src={item.image} alt="" />
+                <img src={url+"/"+item.image} alt="" />
                 <p>{item.name}</p>
                 <p>&#8377;{item.price}</p>
                 <p>{cartItems[item._id]}</p>
