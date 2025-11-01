@@ -4,9 +4,15 @@ import UserModel from "../models/UserModel.js";
 //add to cart
 const addToCart = async (req, res) => {
     try {
-        const userData = await UserModel.findOne({_id : req.body.userId});
+        console.log("Add to cart request for userId:", req.body.userId, "itemId:", req.body.itemId);
+
+        const userData = await UserModel.findById(req.body.userId);
 
         console.log('User Data:', userData);
+
+        if(userData === null){
+            return  res.status(404).json({ success: false, message: "User not found" });
+        }
     
         let cartData = userData.cartData || {};
 

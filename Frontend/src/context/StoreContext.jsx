@@ -15,6 +15,8 @@ const StoreContextProvider = (props) => {
 
     let url = "http://localhost:4000/api/food/list";
 
+    let backendurl = "http://localhost:4000";
+
     const getFoodList = async()=>{
         const response = await axios.get(`${url}`);
         if(response.data.success){
@@ -46,8 +48,11 @@ const StoreContextProvider = (props) => {
 
     useEffect(() => {
         getFoodList();
-        getCartItems();
     }, []);
+
+    useEffect(() => {
+        getCartItems();
+    }, [token]);
 
 
     const addToCart = async (itemId) => {
@@ -116,6 +121,8 @@ const StoreContextProvider = (props) => {
     const contextValue = {
         food_list,
         cartItems,
+        url,
+        backendurl,
         setCartItems,
         addToCart,
         removeFromCart,
