@@ -9,6 +9,8 @@ import './App.css'
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
+
+  const url = "http://localhost:4000"
   return (
     <div className="app">
       <Navbar />
@@ -19,7 +21,7 @@ const App = () => {
           <Routes>
             <Route path='/add' element={<Add />} />
             <Route path='/list' element={<List />} />
-            <Route path='/orders' element={<Orders />} />
+            <Route path='/orders' element={<Orders />} url={url} />
           </Routes>
         </div>
       </div>

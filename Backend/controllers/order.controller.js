@@ -89,7 +89,9 @@ const userOrders = async(req,res)=>{
 
 const listOrders = async(req,res)=>{
     try {
+        console.log("Fetching all orders for admin");
         const orders = await OrderModel.find({});
+        console.log("Orders fetched:", orders);
         res.json({success:true, data:orders});
     } catch (error) {
         console.log("Error in fetching orders:", error);
@@ -97,4 +99,15 @@ const listOrders = async(req,res)=>{
     }
 }
 
-export {verifyOrder, placeOrder, userOrders,listOrders};
+//api for updating order status
+const updateStatus = async(req,res)=>{
+    try {
+        await OrderModel.findByIdAndUpdate(req.body.orderId, {status : req.body.status});
+        res.json({success:true, message:"Order status updated"});
+    } catch (error) {
+        console.log("Error in updating order status:", error);
+        res.status(500).json({success:false, message:"Error in updating order status"});
+    }
+}
+
+export {verifyOrder, placeOrder, userOrders,listOrders,updateStatus};
